@@ -295,7 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StrikerSlider: {fileID: 0}
-  strikerSpeed: 10000
+  strikerSpeed: 100
   strikerForceField: {fileID: 1223522394}
   pocket: {fileID: 0}
 --- !u!58 &8536452893684715782

@@ -10,7 +10,7 @@ public class StrikerController : MonoBehaviour
     Slider StrikerSlider;
 
     [SerializeField]
-    float strikerSpeed = 10000f;
+    float strikerSpeed = 100f;
 
     [SerializeField]
     Transform strikerForceField;
@@ -50,7 +50,7 @@ public class StrikerController : MonoBehaviour
         isCharging = false;
         Vector3 direction = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction.z = 0f;
-        rb.AddForce(direction * strikerSpeed * Time.deltaTime);
+        rb.AddForce(direction * strikerSpeed);
         playerTurn = false;
     }
 
@@ -90,9 +90,15 @@ public class StrikerController : MonoBehaviour
         // Determine which coin to hit based on game logic.
         // For example, the AI could target the closest coin to the pocket, or a high-value coin.
 
-        GameObject[] coins = GameObject.FindGameObjectsWithTag("Black");
+        GameObject[] coins = GameObject.FindGameObjectsWithTag("White");
         GameObject closestCoin = null;
         float closestDistance = Mathf.Infinity;
+        if (coins.Length == 0)
+        {
+            Debug.Log("No coins left");
+            yield break;
+        }
+
         foreach (GameObject coin in coins)
         {
             float distance = Vector3.Distance(coin.transform.position, pocket.transform.position);
@@ -111,7 +117,7 @@ public class StrikerController : MonoBehaviour
 
         // Apply the calculated force to the striker and end the enemy's turn.
 
-        rb.AddForce(targetDirection.normalized * targetSpeed * Time.deltaTime);
+        rb.AddForce(targetDirection.normalized * targetSpeed);
         
         yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => rb.velocity.magnitude < 0.1f);
@@ -123,8 +129,8 @@ public class StrikerController : MonoBehaviour
     float CalculateStrikerSpeed(float distance)
     {
         float maxDistance = 2.0f; // Maximum distance the striker can travel
-        float minSpeed = 5000f; // Minimum striker speed
-        float maxSpeed = 10000f; // Maximum striker speed
+        float minSpeed = 50f; // Minimum striker speed
+        float maxSpeed = 100f; // Maximum striker speed
 
         float speed = Mathf.Lerp(minSpeed, maxSpeed, distance / maxDistance);
         return speed;
