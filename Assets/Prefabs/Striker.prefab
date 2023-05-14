@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1049791566}
-  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 11.420001}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 11.04}
   m_LocalScale: {x: 6.87963, y: 6.8796334, z: 6.87963}
   m_Children: []
   m_Father: {fileID: 1223522394}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!212 &1049791568
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -138,13 +138,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1932796334}
-  m_LocalRotation: {x: -0.6337818, y: -0.3135612, z: 0.6337818, w: 0.3135612}
-  m_LocalPosition: {x: -0, y: 0.08, z: 15.39}
+  m_LocalRotation: {x: 0.6337831, y: 0.3135586, z: 0.6337831, w: 0.3135586}
+  m_LocalPosition: {x: 0, y: 0, z: -15.73}
   m_LocalScale: {x: 6.87963, y: 6.879632, z: 6.87963}
   m_Children: []
   m_Father: {fileID: 1223522394}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 127.353}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 127.353}
 --- !u!212 &1932796336
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -295,8 +295,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StrikerSlider: {fileID: 0}
-  strikerSpeed: 10000
+  strikerSpeed: 1000
   strikerForceField: {fileID: 1223522394}
+  pocket: {fileID: 0}
 --- !u!58 &8536452893684715782
 CircleCollider2D:
   m_ObjectHideFlags: 0
