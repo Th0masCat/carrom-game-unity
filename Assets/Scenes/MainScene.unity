@@ -347,6 +347,10 @@ PrefabInstance:
       propertyPath: scoreTextPlayer2
       value: 
       objectReference: {fileID: 797763613}
+    - target: {fileID: 4550174806135637985, guid: 72e13da6112dd2a4d940b8922e6eb1b0, type: 3}
+      propertyPath: strikerController
+      value: 
+      objectReference: {fileID: 905907882}
     - target: {fileID: 6469751144476887390, guid: 72e13da6112dd2a4d940b8922e6eb1b0, type: 3}
       propertyPath: m_Name
       value: Hole (2)
@@ -794,19 +798,7 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 905907882}
-        m_TargetAssemblyTypeName: StrikerController, Assembly-CSharp
-        m_MethodName: StrikerXPos
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &686186033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1932,6 +1924,10 @@ PrefabInstance:
       propertyPath: scoreTextPlayer2
       value: 
       objectReference: {fileID: 797763613}
+    - target: {fileID: 4550174806135637985, guid: 72e13da6112dd2a4d940b8922e6eb1b0, type: 3}
+      propertyPath: strikerController
+      value: 
+      objectReference: {fileID: 905907882}
     - target: {fileID: 6469751144476887390, guid: 72e13da6112dd2a4d940b8922e6eb1b0, type: 3}
       propertyPath: m_Name
       value: Hole (1)
@@ -1997,6 +1993,10 @@ PrefabInstance:
       propertyPath: scoreTextPlayer2
       value: 
       objectReference: {fileID: 797763613}
+    - target: {fileID: 4550174806135637985, guid: 72e13da6112dd2a4d940b8922e6eb1b0, type: 3}
+      propertyPath: strikerController
+      value: 
+      objectReference: {fileID: 905907882}
     - target: {fileID: 6469751144476887390, guid: 72e13da6112dd2a4d940b8922e6eb1b0, type: 3}
       propertyPath: m_Name
       value: Hole (3)
@@ -2062,6 +2062,10 @@ PrefabInstance:
       propertyPath: scoreTextPlayer2
       value: 
       objectReference: {fileID: 797763613}
+    - target: {fileID: 4550174806135637985, guid: 72e13da6112dd2a4d940b8922e6eb1b0, type: 3}
+      propertyPath: strikerController
+      value: 
+      objectReference: {fileID: 905907882}
     - target: {fileID: 6469751144476887390, guid: 72e13da6112dd2a4d940b8922e6eb1b0, type: 3}
       propertyPath: m_Name
       value: Hole
@@ -2169,6 +2173,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7be4cff81cb06424ca45fb6c766ab3df, type: 3}
+--- !u!1 &4612410217761618161 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6469751144476887390, guid: 72e13da6112dd2a4d940b8922e6eb1b0, type: 3}
+  m_PrefabInstance: {fileID: 1858789024331264431}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6711160891172082894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2290,78 +2299,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1049791567, guid: f44fe270a66fcac498d820e9b0e48e72, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1049791567, guid: f44fe270a66fcac498d820e9b0e48e72, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 11.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 1049791567, guid: f44fe270a66fcac498d820e9b0e48e72, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1049791567, guid: f44fe270a66fcac498d820e9b0e48e72, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1049791567, guid: f44fe270a66fcac498d820e9b0e48e72, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1049791567, guid: f44fe270a66fcac498d820e9b0e48e72, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1049791567, guid: f44fe270a66fcac498d820e9b0e48e72, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1049791567, guid: f44fe270a66fcac498d820e9b0e48e72, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 1049791567, guid: f44fe270a66fcac498d820e9b0e48e72, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223522393, guid: f44fe270a66fcac498d820e9b0e48e72, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1932796335, guid: f44fe270a66fcac498d820e9b0e48e72, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1932796335, guid: f44fe270a66fcac498d820e9b0e48e72, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1932796335, guid: f44fe270a66fcac498d820e9b0e48e72, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -15.73
-      objectReference: {fileID: 0}
-    - target: {fileID: 1932796335, guid: f44fe270a66fcac498d820e9b0e48e72, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.3135586
-      objectReference: {fileID: 0}
-    - target: {fileID: 1932796335, guid: f44fe270a66fcac498d820e9b0e48e72, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.6337831
-      objectReference: {fileID: 0}
-    - target: {fileID: 1932796335, guid: f44fe270a66fcac498d820e9b0e48e72, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.3135586
-      objectReference: {fileID: 0}
-    - target: {fileID: 1932796335, guid: f44fe270a66fcac498d820e9b0e48e72, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.6337831
-      objectReference: {fileID: 0}
-    - target: {fileID: 1932796335, guid: f44fe270a66fcac498d820e9b0e48e72, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
+    - target: {fileID: 8536452893684715780, guid: f44fe270a66fcac498d820e9b0e48e72, type: 3}
+      propertyPath: pocket
+      value: 
+      objectReference: {fileID: 4612410217761618161}
     - target: {fileID: 8536452893684715780, guid: f44fe270a66fcac498d820e9b0e48e72, type: 3}
       propertyPath: StrikerSlider
       value: 
@@ -2380,7 +2321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8536452893684715787, guid: f44fe270a66fcac498d820e9b0e48e72, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.57
+      value: -4.55
       objectReference: {fileID: 0}
     - target: {fileID: 8536452893684715787, guid: f44fe270a66fcac498d820e9b0e48e72, type: 3}
       propertyPath: m_LocalPosition.z

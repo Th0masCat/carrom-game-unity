@@ -113,10 +113,9 @@ public class StrikerController : MonoBehaviour
 
         rb.AddForce(targetDirection.normalized * targetSpeed * Time.deltaTime);
         
-        
-
         yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => rb.velocity.magnitude < 0.1f);
+        rb.velocity = Vector2.zero;
 
         playerTurn = true;
     }
