@@ -17,12 +17,9 @@ public class StrikerController : MonoBehaviour
 
     [SerializeField]
     GameObject pocket;
-
     bool isCharging;
     Vector2 direction;
-
     Rigidbody2D rb;
-
     public static bool playerTurn = true;
 
     private void Start()
@@ -54,7 +51,7 @@ public class StrikerController : MonoBehaviour
         Vector3 direction = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction.z = 0f;
         rb.AddForce(direction * strikerSpeed * Time.deltaTime);
-        playerTurn = !playerTurn;
+        playerTurn = false;
     }
 
     private void OnMouseDrag()
@@ -115,12 +112,13 @@ public class StrikerController : MonoBehaviour
         // Apply the calculated force to the striker and end the enemy's turn.
 
         rb.AddForce(targetDirection.normalized * targetSpeed * Time.deltaTime);
+        
+        
 
         yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => rb.velocity.magnitude < 0.1f);
-        
-        rb.velocity = Vector2.zero;
-        playerTurn = !playerTurn;
+
+        playerTurn = true;
     }
 
     float CalculateStrikerSpeed(float distance)
@@ -139,9 +137,10 @@ public class StrikerController : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => rb.velocity.magnitude < 0.1f);
         rb.velocity = Vector2.zero;
-        StrikerSlider.gameObject.SetActive(true);
+        
         if (playerTurn)
         {
+            StrikerSlider.gameObject.SetActive(true);
             transform.position = new Vector3(StrikerSlider.value, -4.57f, 0);
         }
         else
@@ -150,4 +149,5 @@ public class StrikerController : MonoBehaviour
             StartCoroutine(EnemyTurn());
         }
     }
+
 }
