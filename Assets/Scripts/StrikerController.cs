@@ -90,7 +90,7 @@ public class StrikerController : MonoBehaviour
         // Determine which coin to hit based on game logic.
         // For example, the AI could target the closest coin to the pocket, or a high-value coin.
 
-        GameObject[] coins = GameObject.FindGameObjectsWithTag("White");
+        GameObject[] coins = GameObject.FindGameObjectsWithTag("Black");
         GameObject closestCoin = null;
         float closestDistance = Mathf.Infinity;
         if (coins.Length == 0)
@@ -122,6 +122,7 @@ public class StrikerController : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => rb.velocity.magnitude < 0.1f);
         rb.velocity = Vector2.zero;
+        rb.rotation = 0f;
 
         playerTurn = true;
     }
@@ -142,6 +143,7 @@ public class StrikerController : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => rb.velocity.magnitude < 0.1f);
         rb.velocity = Vector2.zero;
+        rb.rotation = 0f;
         
         if (playerTurn)
         {
