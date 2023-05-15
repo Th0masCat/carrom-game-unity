@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
         
 
 
-        if(timerScript.isTimerRunning == false || BoardScript.scorePlayer1 == 5 || BoardScript.scorePlayer2 == 5){
+        if(timerScript.isTimerRunning == false || BoardScript.scorePlayer1 >= 8 || BoardScript.scorePlayer2 >= 8){
             onGameOver();
         }
         
