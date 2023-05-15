@@ -70,7 +70,7 @@ public class StrikerController : MonoBehaviour
         strikerForceField.localScale = new Vector3(scaleValue, scaleValue, scaleValue);
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (rb.velocity.magnitude > 0.1f)
         {
@@ -130,8 +130,8 @@ public class StrikerController : MonoBehaviour
     float CalculateStrikerSpeed(float distance)
     {
         float maxDistance = 2.0f; // Maximum distance the striker can travel
-        float minSpeed = 50f; // Minimum striker speed
-        float maxSpeed = 100f; // Maximum striker speed
+        float minSpeed = 10f; // Minimum striker speed
+        float maxSpeed = 70f; // Maximum striker speed
 
         float speed = Mathf.Lerp(minSpeed, maxSpeed, distance / maxDistance);
         return speed;
@@ -152,7 +152,7 @@ public class StrikerController : MonoBehaviour
         }
         else
         {
-            transform.position = new Vector3(StrikerSlider.value, 3.45f, 0);
+            transform.position = new Vector3(0, 3.45f, 0);
             StartCoroutine(EnemyTurn());
         }
     }
