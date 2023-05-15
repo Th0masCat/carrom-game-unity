@@ -20,6 +20,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject pauseMenu;
 
+    [SerializeField]
+    GameObject gameOverMenu;
+
+    
+
     void Start()
     {
         BoardScript.scorePlayer1 = 0;
@@ -46,7 +51,12 @@ public class GameManager : MonoBehaviour
     }
 
     void Update(){
-        if(Input.GetKeyDown(KeyCode.Escape)){
+
+        if(timerScript.isTimerRunning == false || BoardScript.scorePlayer1 == 5 || BoardScript.scorePlayer2 == 5){
+            onGameOver();
+        }
+        
+        if(Input.GetKeyDown(KeyCode.Escape) && !gameOver){
             if(isPaused){
                 ResumeGame();
             }else{
@@ -55,27 +65,28 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void LateUpdate()
-    {
-        scoreTextPlayer1.text = BoardScript.scorePlayer1.ToString();
-        scoreTextPlayer2.text = BoardScript.scorePlayer2.ToString();
 
-        if (timerScript.timeLeft <= 0)
-        {
-            gameOver = true;
+    void onGameOver(){
+        gameOver = true;    
+        Time.timeScale = 0;
+        gameOverMenu.SetActive(true);
+        if(BoardScript.scorePlayer1 > BoardScript.scorePlayer2){
+            scoreTextPlayer1.text = "You Win!";
+            scoreTextPlayer2.text = "You Lose!";
+        }else if(BoardScript.scorePlayer1 < BoardScript.scorePlayer2){
+            scoreTextPlayer1.text = "You Lose!";
+            scoreTextPlayer2.text = "You Win!";
+        }else{
+            scoreTextPlayer1.text = "Draw!";
+            scoreTextPlayer2.text = "Draw!";
         }
-        else if (BoardScript.scorePlayer1 == 8)
-        {
-            gameOver = true;
-            scoreTextPlayer1.text = "Player 1 Wins";
-            scoreTextPlayer2.text = "Player 1 Wins";
-        }
-        else if (BoardScript.scorePlayer2 == 8)
-        {
-            gameOver = true;
-            scoreTextPlayer1.text = "Player 2 Wins";
-            scoreTextPlayer2.text = "Player 2 Wins";
-        }
+    }
+
+    private void LateUpdate()
+    {   
+        if(!gameOver)
+        {scoreTextPlayer1.text = BoardScript.scorePlayer1.ToString();
+        scoreTextPlayer2.text = BoardScript.scorePlayer2.ToString();}
     }
 
 
