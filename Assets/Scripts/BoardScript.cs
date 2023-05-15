@@ -14,11 +14,11 @@ public class BoardScript : MonoBehaviour
             case "Striker":
                 if (StrikerController.playerTurn == true)
                 {
-                    scorePlayer1--;
+                    scorePlayer2--;
                 }
                 else
                 {
-                    scorePlayer2--;
+                    scorePlayer1--;
                 }
 
                 Debug.Log("Striker Entered");
@@ -39,11 +39,11 @@ public class BoardScript : MonoBehaviour
 
                 if (StrikerController.playerTurn == true)
                 {
-                    scorePlayer1 += 2;
+                    scorePlayer2 += 2;
                 }
                 else
                 {
-                    scorePlayer2 += 2;
+                    scorePlayer1 += 2;
                 }
                 Debug.Log("Queen Entered");
                 Destroy(other.gameObject);

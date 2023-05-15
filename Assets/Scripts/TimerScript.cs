@@ -29,15 +29,4 @@ public class TimerScript : MonoBehaviour
         }
     }
 
-    public void StartTimer()
-    {
-        isTimerRunning = true;
-        timeLeft = 120.0f;
-    }
-
-    public void StopTimer()
-    {
-        isTimerRunning = false;
-    }
-
 }

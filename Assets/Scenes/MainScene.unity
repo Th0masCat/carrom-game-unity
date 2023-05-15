@@ -4731,18 +4731,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1648797873}
     m_Modifications:
-    - target: {fileID: 4550174806135637985, guid: 72e13da6112dd2a4d940b8922e6eb1b0, type: 3}
-      propertyPath: scoreTextPlayer1
-      value: 
-      objectReference: {fileID: 710136697}
-    - target: {fileID: 4550174806135637985, guid: 72e13da6112dd2a4d940b8922e6eb1b0, type: 3}
-      propertyPath: scoreTextPlayer2
-      value: 
-      objectReference: {fileID: 797763613}
-    - target: {fileID: 4550174806135637985, guid: 72e13da6112dd2a4d940b8922e6eb1b0, type: 3}
-      propertyPath: strikerController
-      value: 
-      objectReference: {fileID: 82672648}
     - target: {fileID: 6469751144476887390, guid: 72e13da6112dd2a4d940b8922e6eb1b0, type: 3}
       propertyPath: m_Name
       value: Hole

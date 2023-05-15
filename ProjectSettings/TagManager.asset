@@ -8,6 +8,7 @@ TagManager:
   - Queen
   - Black
   - White
+  - Pocket
   layers:
   - Default
   - TransparentFX

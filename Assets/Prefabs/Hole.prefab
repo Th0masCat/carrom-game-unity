@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4550174806135637985}
   m_Layer: 0
   m_Name: Hole
-  m_TagString: Untagged
+  m_TagString: Pocket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60,5 +60,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962b2b4c50614f348abaf730e3a78df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreTextPlayer1: {fileID: 0}
-  scoreTextPlayer2: {fileID: 0}
