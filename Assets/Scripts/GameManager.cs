@@ -23,6 +23,15 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject gameOverMenu;
 
+
+    [SerializeField]
+    GameObject playerStriker;
+
+    [SerializeField]
+    GameObject enemyStriker;
+
+
+
     
 
     void Start()
@@ -51,6 +60,17 @@ public class GameManager : MonoBehaviour
     }
 
     void Update(){
+
+        
+            if(StrikerController.playerTurn == true ){
+                playerStriker.GetComponent<StrikerController>().enabled = true;
+                enemyStriker.GetComponent<EnemyStrikerController>().enabled = false;
+            }else{
+                playerStriker.GetComponent<StrikerController>().enabled = false;
+                enemyStriker.GetComponent<EnemyStrikerController>().enabled = true;
+            }
+        
+
 
         if(timerScript.isTimerRunning == false || BoardScript.scorePlayer1 == 5 || BoardScript.scorePlayer2 == 5){
             onGameOver();

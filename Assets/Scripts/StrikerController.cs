@@ -18,10 +18,13 @@ public class StrikerController : MonoBehaviour
     bool isCharging;
     Vector2 direction;
     Rigidbody2D rb;
-    public static bool playerTurn = true;
+    public static bool playerTurn;
+    bool isMoving;
 
     private void Start()
     {
+        playerTurn = true;
+        isMoving = false;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -37,20 +40,27 @@ public class StrikerController : MonoBehaviour
         strikerForceField.gameObject.SetActive(true);
     }
 
-    private void OnMouseUp()
+    private IEnumerator OnMouseUp()
     {
+        yield return new WaitForSeconds(0.1f);
         if (!isCharging)
         {
-            return;
+            yield break;
         }
+
 
         strikerForceField.gameObject.SetActive(false);
         isCharging = false;
         Vector3 direction = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction.z = 0f;
         rb.AddForce(direction * strikerSpeed);
-        
+
+        yield return new WaitUntil(() => rb.velocity.magnitude < 0.1f);
+        isMoving = false;
+
     }
+
+
 
     private void OnMouseDrag()
     {
@@ -70,23 +80,29 @@ public class StrikerController : MonoBehaviour
 
     private void Update()
     {
+        if (rb.velocity.magnitude < 0.1f && !isMoving)
+        {
+            isMoving = true;
+            StartCoroutine(OnMouseUp());
+            
+            playerTurn = false;
+        }
+
         if (rb.velocity.magnitude > 0.1f)
         {
             StrikerSlider.gameObject.SetActive(false);
         }
 
-        if (!isCharging && rb.velocity.magnitude < 0.1f && playerTurn == true)
+        if (!isCharging && rb.velocity.magnitude < 0.1f)
         {
             StrikerXPos();
         }
 
     }
 
-
     public void StrikerXPos()
     {
         Debug.Log("StrikerXPos");
-        playerTurn = false;
         StrikerSlider.gameObject.SetActive(true);
         transform.position = new Vector3(StrikerSlider.value, -4.57f, 0);
     }
