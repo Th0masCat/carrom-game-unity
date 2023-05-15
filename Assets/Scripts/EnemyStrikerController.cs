@@ -7,33 +7,35 @@ public class EnemyStrikerController : MonoBehaviour
     [SerializeField]
     GameObject pocket;
 
+
     Rigidbody2D rb;
-    
-    bool again = false;
+    bool isMoving;
 
-    private void OnEnable()
+    private void Start()
     {
-        transform.position = new Vector3(0, 3.54f, 0);
-        StartCoroutine(EnemyTurn()); 
-    }
-
-    private void Awake()
-    {
+        isMoving = false;
         rb = GetComponent<Rigidbody2D>();
         
     }
 
+
     private void Update() {
-        enabled = !StrikerController.playerTurn;
-        Debug.Log(StrikerController.playerTurn);
+        if (rb.velocity.magnitude < 0.1f && !isMoving)
+        {
+            isMoving = true;
+            StartCoroutine(EnemyTurn());
+        }
     }
+
 
 
     IEnumerator EnemyTurn()
     {
         // Determine which coin to hit based on game logic.
         // For example, the AI could target the closest coin to the pocket, or a high-value coin.
+        transform.position = new Vector3(0f, 3.45f, 0f);
         yield return new WaitForSeconds(2f);
+        
 
         GameObject[] coins = GameObject.FindGameObjectsWithTag("Black");
         GameObject closestCoin = null;
@@ -64,9 +66,9 @@ public class EnemyStrikerController : MonoBehaviour
 
         
         rb.AddForce(targetDirection.normalized * targetSpeed, ForceMode2D.Impulse);
-
         yield return new WaitUntil(() => rb.velocity.magnitude < 0.1f);
-
+        isMoving = false;
+        
     }
 
     float CalculateStrikerSpeed(float distance)
