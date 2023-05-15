@@ -69,6 +69,8 @@ public class GameManager : MonoBehaviour
     void onGameOver(){
         gameOver = true;    
         Time.timeScale = 0;
+        BoardScript.scorePlayer1 = 0;
+        BoardScript.scorePlayer2 = 0;
         gameOverMenu.SetActive(true);
         if(BoardScript.scorePlayer1 > BoardScript.scorePlayer2){
             scoreTextPlayer1.text = "You Win!";
