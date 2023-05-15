@@ -63,11 +63,11 @@ public class GameManager : MonoBehaviour
 
         
             if(StrikerController.playerTurn == true ){
-                playerStriker.GetComponent<StrikerController>().enabled = true;
-                enemyStriker.GetComponent<EnemyStrikerController>().enabled = false;
+                playerStriker.SetActive(true);
+                enemyStriker.SetActive(false); 
             }else{
-                playerStriker.GetComponent<StrikerController>().enabled = false;
-                enemyStriker.GetComponent<EnemyStrikerController>().enabled = true;
+                playerStriker.SetActive(false);
+                enemyStriker.SetActive(true);
             }
         
 

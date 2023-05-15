@@ -1589,7 +1589,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &585606172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3427,6 +3427,8 @@ MonoBehaviour:
   gameOver: 0
   pauseMenu: {fileID: 1148458908}
   gameOverMenu: {fileID: 1184291094}
+  playerStriker: {fileID: 82672645}
+  enemyStriker: {fileID: 585606171}
 --- !u!114 &1527715091
 MonoBehaviour:
   m_ObjectHideFlags: 0

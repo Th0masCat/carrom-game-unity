@@ -56,6 +56,7 @@ public class StrikerController : MonoBehaviour
         direction.z = 0f;
         rb.AddForce(direction * strikerSpeed);
 
+        yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => rb.velocity.magnitude < 0.1f);
         isMoving = false;
         playerTurn = false;
