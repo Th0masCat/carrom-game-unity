@@ -22,7 +22,6 @@ public class EnemyStrikerController : MonoBehaviour
         {
             isMoving = true;
             StartCoroutine(EnemyTurn());
-            StrikerController.playerTurn = true;
         }
     }
 
@@ -67,7 +66,7 @@ public class EnemyStrikerController : MonoBehaviour
         rb.AddForce(targetDirection.normalized * targetSpeed, ForceMode2D.Impulse);
         yield return new WaitUntil(() => rb.velocity.magnitude < 0.1f);
         isMoving = false;
-        
+        StrikerController.playerTurn = true;
         
     }
 

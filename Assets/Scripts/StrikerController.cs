@@ -18,7 +18,7 @@ public class StrikerController : MonoBehaviour
     bool isCharging;
     Vector2 direction;
     Rigidbody2D rb;
-    public static bool playerTurn;
+    public static bool playerTurn ;
     bool isMoving;
 
     private void Start()
@@ -42,12 +42,13 @@ public class StrikerController : MonoBehaviour
 
     private IEnumerator OnMouseUp()
     {
+        isMoving = true;
         yield return new WaitForSeconds(0.1f);
         if (!isCharging)
         {
             yield break;
         }
-
+        
 
         strikerForceField.gameObject.SetActive(false);
         isCharging = false;
@@ -57,7 +58,7 @@ public class StrikerController : MonoBehaviour
 
         yield return new WaitUntil(() => rb.velocity.magnitude < 0.1f);
         isMoving = false;
-
+        playerTurn = false;
     }
 
 
@@ -84,8 +85,6 @@ public class StrikerController : MonoBehaviour
         {
             isMoving = true;
             StartCoroutine(OnMouseUp());
-            
-            playerTurn = false;
         }
 
         if (rb.velocity.magnitude > 0.1f)
@@ -102,7 +101,6 @@ public class StrikerController : MonoBehaviour
 
     public void StrikerXPos()
     {
-        Debug.Log("StrikerXPos");
         StrikerSlider.gameObject.SetActive(true);
         transform.position = new Vector3(StrikerSlider.value, -4.57f, 0);
     }
