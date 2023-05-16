@@ -9,6 +9,7 @@ public class CollisionSoundManager : MonoBehaviour
         if (other.relativeVelocity.magnitude > 0.1f)
         {
             GetComponent<AudioSource>().Play();
+            GetComponent<AudioSource>().volume = other.relativeVelocity.magnitude / 100;
         }
     }
 }

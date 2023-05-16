@@ -115,7 +115,7 @@ public class StrikerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.relativeVelocity.magnitude > 0.1f)
+        if (other.gameObject.CompareTag("Board"))
         {
             GetComponent<AudioSource>().Play();
         }
