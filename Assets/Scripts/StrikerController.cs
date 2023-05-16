@@ -104,8 +104,16 @@ public class StrikerController : MonoBehaviour
         }
     }
 
+    public void SetSliderX()
+    {
+        if (rb.velocity.magnitude < 0.1f)
+        {
+            transform.position = new Vector3(StrikerSlider.value, -4.57f, 0);
+        }
+    }
 
-    private void OnEnable() {
+    private void OnEnable()
+    {
         transform.position = new Vector3(StrikerSlider.value, -4.57f, 0);
     }
 
