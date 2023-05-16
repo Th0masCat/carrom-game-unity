@@ -18,7 +18,7 @@ public class StrikerController : MonoBehaviour
     bool isCharging;
     Vector2 direction;
     Rigidbody2D rb;
-    public static bool playerTurn ;
+    public static bool playerTurn;
     bool isMoving;
 
     private void Start()
@@ -48,18 +48,26 @@ public class StrikerController : MonoBehaviour
         {
             yield break;
         }
-        
+
 
         strikerForceField.gameObject.SetActive(false);
         isCharging = false;
         Vector3 direction = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction.z = 0f;
-        rb.AddForce(direction * strikerSpeed);
+
+        float maxForceMagnitude = 30f;
+        float forceMagnitude = direction.magnitude * strikerSpeed;
+        Debug.Log(forceMagnitude);
+        forceMagnitude = Mathf.Clamp(forceMagnitude, 0f, maxForceMagnitude);
+        Debug.Log(forceMagnitude);
+
+        rb.AddForce(direction.normalized * forceMagnitude, ForceMode2D.Impulse);
 
         yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => rb.velocity.magnitude < 0.1f);
         isMoving = false;
         playerTurn = false;
+        gameObject.SetActive(false);
     }
 
 
@@ -77,6 +85,13 @@ public class StrikerController : MonoBehaviour
         strikerForceField.LookAt(transform.position + direction);
 
         float scaleValue = Vector3.Distance(transform.position, transform.position + direction);
+        float maxScale = 1f; // Adjust this value to your desired maximum scale
+
+        if (scaleValue > maxScale)
+        {
+            scaleValue = maxScale;
+        }
+
         strikerForceField.localScale = new Vector3(scaleValue, scaleValue, scaleValue);
     }
 

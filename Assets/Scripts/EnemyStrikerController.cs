@@ -40,7 +40,6 @@ public class EnemyStrikerController : MonoBehaviour
         
         yield return new WaitForSeconds(2f);
 
-
         GameObject[] coins = GameObject.FindGameObjectsWithTag("Black");
         GameObject closestCoin = null;
         float closestDistance = Mathf.Infinity;
