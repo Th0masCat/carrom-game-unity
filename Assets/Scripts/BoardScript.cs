@@ -37,19 +37,19 @@ public class BoardScript : MonoBehaviour
                     scoreEnemy--;
                 }
 
-                StartCoroutine(textPopUp("Striker Lost: -1 to " + (StrikerController.playerTurn ? "Player" : "Enemy")));
+                StartCoroutine(textPopUp("Striker Lost! -1 to " + (StrikerController.playerTurn ? "Player" : "Enemy")));
                 other.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 break;
             case "Black":
                 scoreEnemy++;
 
-                StartCoroutine(textPopUp("Black Coin Entered: +1 to Enemy"));
+                StartCoroutine(textPopUp("Black Coin Entered! +1 to Enemy"));
                 Destroy(other.gameObject);
                 break;
             case "White":
                 scorePlayer++;
 
-                StartCoroutine(textPopUp("White Coin Entered: +1 to Player"));
+                StartCoroutine(textPopUp("White Coin Entered! +1 to Player"));
                 Destroy(other.gameObject);
                 break;
             case "Queen":
@@ -63,7 +63,7 @@ public class BoardScript : MonoBehaviour
                     scoreEnemy += 2;
                 }
 
-                StartCoroutine(textPopUp("Queen Entered: +2 to " + (StrikerController.playerTurn ? "Player" : "Enemy")));
+                StartCoroutine(textPopUp("Queen Entered! +2 to " + (StrikerController.playerTurn ? "Player" : "Enemy")));
                 Destroy(other.gameObject);
                 break;
 
