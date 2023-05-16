@@ -30,6 +30,25 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject enemyStriker;
 
+    [SerializeField]
+    GameObject turnText;
+
+    [SerializeField]
+    GameObject slider;
+
+    [SerializeField]
+    TextMeshProUGUI gameOverText;
+
+    [SerializeField]
+    Animator animator;
+
+    IEnumerator playAnimation()
+    {
+        animator.SetTrigger("fade");
+        yield return new WaitForSeconds(1f);
+
+    }
+
     void Start()
     {
         Time.timeScale = 1;
@@ -54,22 +73,23 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
+        SceneManager.LoadScene(1);
         Time.timeScale = 1;
     }
 
     void Update()
     {
-
-
         if (StrikerController.playerTurn == true)
         {
+            slider.SetActive(true);
+            turnText.SetActive(true);
             playerStriker.SetActive(true);
             enemyStriker.SetActive(false);
         }
         else
         {
+            slider.SetActive(false);
+            turnText.SetActive(false);
             playerStriker.SetActive(false);
             enemyStriker.SetActive(true);
         }
@@ -101,18 +121,15 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         if (BoardScript.scoreEnemy > BoardScript.scorePlayer)
         {
-            scoreTextEnemy.text = "You Win!";
-            scoreTextPlayer.text = "You Lose!";
+            gameOverText.text = "You Lose!";
         }
         else if (BoardScript.scoreEnemy < BoardScript.scorePlayer)
         {
-            scoreTextEnemy.text = "You Lose!";
-            scoreTextPlayer.text = "You Win!";
+            gameOverText.text = "You Win!";
         }
         else
         {
-            scoreTextEnemy.text = "Draw!";
-            scoreTextPlayer.text = "Draw!";
+            gameOverText.text = "Draw!";
         }
     }
 
@@ -129,6 +146,8 @@ public class GameManager : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
+        StartCoroutine(playAnimation());
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1;
     }
 }

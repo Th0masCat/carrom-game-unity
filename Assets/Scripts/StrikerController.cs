@@ -88,11 +88,6 @@ public class StrikerController : MonoBehaviour
             StartCoroutine(OnMouseUp());
         }
 
-        if (rb.velocity.magnitude > 0.1f)
-        {
-            StrikerSlider.gameObject.SetActive(false);
-        }
-
         if (!isCharging && rb.velocity.magnitude < 0.1f)
         {
             StrikerXPos();
@@ -102,7 +97,6 @@ public class StrikerController : MonoBehaviour
 
     public void StrikerXPos()
     {
-        StrikerSlider.gameObject.SetActive(true);
         transform.position = new Vector3(StrikerSlider.value, -4.57f, 0);
     }
 
