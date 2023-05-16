@@ -5,12 +5,10 @@ using TMPro;
 
 public class TimerScript : MonoBehaviour
 {
-
     [SerializeField]
     TextMeshProUGUI timerText;
 
     public float timeLeft = 120.0f;  // The time in seconds that the timer will run for
-
     public bool isTimerRunning = true;  // Indicates whether the timer is currently running
 
     void Update()

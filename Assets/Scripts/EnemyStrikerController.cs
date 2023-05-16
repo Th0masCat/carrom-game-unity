@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EnemyStrikerController : MonoBehaviour
 {
-    [SerializeField]
-    GameObject pocket;
     Rigidbody2D rb;
     bool isMoving;
 
@@ -13,9 +11,7 @@ public class EnemyStrikerController : MonoBehaviour
     {
         isMoving = false;
         rb = GetComponent<Rigidbody2D>();
-
     }
-
 
     private void Update()
     {
@@ -31,13 +27,10 @@ public class EnemyStrikerController : MonoBehaviour
         transform.position = new Vector3(0, 3.45f, 0f);
     }
 
-
     IEnumerator EnemyTurn()
     {
         // Determine which coin to hit based on game logic.
         // For example, the AI could target the closest coin to the pocket, or a high-value coin.
-
-
         yield return new WaitForSeconds(1.5f);
         float x = Random.Range(-3.24f, 3.24f);
         transform.position = new Vector3(x, 3.45f, 0f);
@@ -63,17 +56,12 @@ public class EnemyStrikerController : MonoBehaviour
             }
         }
 
-        Debug.Log("Closest coin is " + closestCoin.name);
-
         // Calculate the direction and speed of the striker based on the position of the target coin and the enemy's striker.
-
         Vector3 targetDirection = closestCoin.transform.position - transform.position;
         targetDirection.z = 0f;
         float targetSpeed = CalculateStrikerSpeed(targetDirection.magnitude);
 
         // Apply the calculated force to the striker and end the enemy's turn.
-
-
         rb.AddForce(targetDirection.normalized * targetSpeed, ForceMode2D.Impulse);
 
         yield return new WaitForSeconds(0.1f);
@@ -81,7 +69,6 @@ public class EnemyStrikerController : MonoBehaviour
         isMoving = false;
         StrikerController.playerTurn = true;
         gameObject.SetActive(false);
-
     }
 
     Vector3 GetClosestPocket(Vector3 position)
@@ -112,6 +99,5 @@ public class EnemyStrikerController : MonoBehaviour
         float speed = Mathf.Lerp(minSpeed, maxSpeed, distance / maxDistance);
         return speed;
     }
-
 
 }

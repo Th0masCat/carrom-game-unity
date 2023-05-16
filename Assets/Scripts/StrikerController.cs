@@ -11,21 +11,37 @@ public class StrikerController : MonoBehaviour
 
     [SerializeField]
     float strikerSpeed = 100f;
+    float maxScale = 1f;
 
     [SerializeField]
     Transform strikerForceField;
 
-    bool isCharging;
-    Vector2 direction;
-    Rigidbody2D rb;
-    public static bool playerTurn;
     bool isMoving;
+    bool isCharging;
+    float maxForceMagnitude = 30f;
+    Rigidbody2D rb;
+    
+    public static bool playerTurn;
 
     private void Start()
     {
         playerTurn = true;
         isMoving = false;
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void OnEnable()
+    {
+        transform.position = new Vector3(StrikerSlider.value, -4.57f, 0);
+    } 
+
+    private void Update()
+    {
+        if (rb.velocity.magnitude < 0.1f && !isMoving)
+        {
+            isMoving = true;
+            StartCoroutine(OnMouseUp());
+        }
     }
 
     private void OnMouseDown()
@@ -49,17 +65,14 @@ public class StrikerController : MonoBehaviour
             yield break;
         }
 
-
         strikerForceField.gameObject.SetActive(false);
         isCharging = false;
         Vector3 direction = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction.z = 0f;
 
-        float maxForceMagnitude = 30f;
+        
         float forceMagnitude = direction.magnitude * strikerSpeed;
-        Debug.Log(forceMagnitude);
         forceMagnitude = Mathf.Clamp(forceMagnitude, 0f, maxForceMagnitude);
-        Debug.Log(forceMagnitude);
 
         rb.AddForce(direction.normalized * forceMagnitude, ForceMode2D.Impulse);
 
@@ -69,8 +82,6 @@ public class StrikerController : MonoBehaviour
         playerTurn = false;
         gameObject.SetActive(false);
     }
-
-
 
     private void OnMouseDrag()
     {
@@ -85,7 +96,6 @@ public class StrikerController : MonoBehaviour
         strikerForceField.LookAt(transform.position + direction);
 
         float scaleValue = Vector3.Distance(transform.position, transform.position + direction);
-        float maxScale = 1f; // Adjust this value to your desired maximum scale
 
         if (scaleValue > maxScale)
         {
@@ -94,16 +104,7 @@ public class StrikerController : MonoBehaviour
 
         strikerForceField.localScale = new Vector3(scaleValue, scaleValue, scaleValue);
     }
-
-    private void Update()
-    {
-        if (rb.velocity.magnitude < 0.1f && !isMoving)
-        {
-            isMoving = true;
-            StartCoroutine(OnMouseUp());
-        }
-    }
-
+    
     public void SetSliderX()
     {
         if (rb.velocity.magnitude < 0.1f)
@@ -111,10 +112,4 @@ public class StrikerController : MonoBehaviour
             transform.position = new Vector3(StrikerSlider.value, -4.57f, 0);
         }
     }
-
-    private void OnEnable()
-    {
-        transform.position = new Vector3(StrikerSlider.value, -4.57f, 0);
-    }
-
 }

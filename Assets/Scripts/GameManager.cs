@@ -6,23 +6,20 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    bool gameOver = false;
+    bool isPaused = false;
+
     [SerializeField]
     TextMeshProUGUI scoreTextEnemy;
 
     [SerializeField]
-    TextMeshProUGUI scoreTextPlayer;
-
-    public bool gameOver = false;
-    bool isPaused = false;
-
-    TimerScript timerScript;
+    TextMeshProUGUI scoreTextPlayer; 
 
     [SerializeField]
     GameObject pauseMenu;
 
     [SerializeField]
     GameObject gameOverMenu;
-
 
     [SerializeField]
     GameObject playerStriker;
@@ -42,12 +39,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Animator animator;
 
-    IEnumerator playAnimation()
-    {
-        animator.SetTrigger("fade");
-        yield return new WaitForSeconds(1f);
-
-    }
+    TimerScript timerScript;
 
     void Start()
     {
@@ -55,25 +47,6 @@ public class GameManager : MonoBehaviour
         BoardScript.scoreEnemy = 0;
         BoardScript.scorePlayer = 0;
         timerScript = GetComponent<TimerScript>();
-    }
-
-    public void ResumeGame()
-    {
-        isPaused = false;
-        pauseMenu.SetActive(false);
-        Time.timeScale = 1;
-    }
-
-    public void PauseGame()
-    {
-        isPaused = true;
-        pauseMenu.SetActive(true);
-        Time.timeScale = 0;
-    }
-
-    public void RestartGame()
-    {
-        SceneManager.LoadScene(1);
     }
 
     void Update()
@@ -112,6 +85,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void LateUpdate()
+    {
+        if (!gameOver)
+        {
+            scoreTextEnemy.text = BoardScript.scoreEnemy.ToString();
+            scoreTextPlayer.text = BoardScript.scorePlayer.ToString();
+        }
+    }
+
+    IEnumerator playAnimation()
+    {
+        animator.SetTrigger("fade");
+        yield return new WaitForSeconds(1f);
+
+    }
 
     void onGameOver()
     {
@@ -132,16 +120,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-    private void LateUpdate()
+    public void ResumeGame()
     {
-        if (!gameOver)
-        {
-            scoreTextEnemy.text = BoardScript.scoreEnemy.ToString();
-            scoreTextPlayer.text = BoardScript.scorePlayer.ToString();
-        }
+        isPaused = false;
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1;
     }
 
+    public void PauseGame()
+    {
+        isPaused = true;
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(1);
+    }
 
     public void QuitGame()
     {

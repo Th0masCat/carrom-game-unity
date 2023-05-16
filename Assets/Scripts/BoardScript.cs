@@ -14,7 +14,7 @@ public class BoardScript : MonoBehaviour
     {
         popUpText = GameObject.Find("UpdatesText").GetComponent<TextMeshProUGUI>();
     }
-   
+
     IEnumerator textPopUp(string text)
     {
         popUpText.text = text;
@@ -40,20 +40,22 @@ public class BoardScript : MonoBehaviour
                 StartCoroutine(textPopUp("Striker Lost! -1 to " + (StrikerController.playerTurn ? "Player" : "Enemy")));
                 other.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 break;
+
             case "Black":
                 scoreEnemy++;
 
                 StartCoroutine(textPopUp("Black Coin Entered! +1 to Enemy"));
                 Destroy(other.gameObject);
                 break;
+
             case "White":
                 scorePlayer++;
 
                 StartCoroutine(textPopUp("White Coin Entered! +1 to Player"));
                 Destroy(other.gameObject);
                 break;
-            case "Queen":
 
+            case "Queen":
                 if (StrikerController.playerTurn == true)
                 {
                     scorePlayer += 2;
@@ -66,8 +68,6 @@ public class BoardScript : MonoBehaviour
                 StartCoroutine(textPopUp("Queen Entered! +2 to " + (StrikerController.playerTurn ? "Player" : "Enemy")));
                 Destroy(other.gameObject);
                 break;
-
-
         }
     }
 }
