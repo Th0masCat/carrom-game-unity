@@ -26,18 +26,22 @@ public class EnemyStrikerController : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        transform.position = new Vector3(0, 3.45f, 0f);
+    }
 
 
     IEnumerator EnemyTurn()
     {
         // Determine which coin to hit based on game logic.
         // For example, the AI could target the closest coin to the pocket, or a high-value coin.
-        transform.position = new Vector3(0, 3.45f, 0f);
-        
+
+
         yield return new WaitForSeconds(1.5f);
         float x = Random.Range(-3.24f, 3.24f);
         transform.position = new Vector3(x, 3.45f, 0f);
-        
+
         yield return new WaitForSeconds(2f);
 
         GameObject[] coins = GameObject.FindGameObjectsWithTag("Black");
@@ -76,6 +80,7 @@ public class EnemyStrikerController : MonoBehaviour
         yield return new WaitUntil(() => rb.velocity.magnitude < 0.1f);
         isMoving = false;
         StrikerController.playerTurn = true;
+        gameObject.SetActive(false);
 
     }
 
@@ -100,9 +105,9 @@ public class EnemyStrikerController : MonoBehaviour
 
     float CalculateStrikerSpeed(float distance)
     {
-        float maxDistance = 2.0f; // Maximum distance the striker can travel
+        float maxDistance = 4.0f; // Maximum distance the striker can travel
         float minSpeed = 10f; // Minimum striker speed
-        float maxSpeed = 40f; // Maximum striker speed
+        float maxSpeed = 30f; // Maximum striker speed
 
         float speed = Mathf.Lerp(minSpeed, maxSpeed, distance / maxDistance);
         return speed;

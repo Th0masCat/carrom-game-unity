@@ -102,16 +102,10 @@ public class StrikerController : MonoBehaviour
             isMoving = true;
             StartCoroutine(OnMouseUp());
         }
-
-        if (!isCharging && rb.velocity.magnitude < 0.1f)
-        {
-            StrikerXPos();
-        }
-
     }
 
-    public void StrikerXPos()
-    {
+
+    private void OnEnable() {
         transform.position = new Vector3(StrikerSlider.value, -4.57f, 0);
     }
 
