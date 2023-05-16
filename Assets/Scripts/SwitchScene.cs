@@ -8,6 +8,10 @@ public class SwitchScene : MonoBehaviour
     [SerializeField]
     Animator animator;
 
+    private void Start() {
+        Time.timeScale = 1;
+    }
+
     public void SwitchToScene()
     {
         StartCoroutine(LoadScene(1));

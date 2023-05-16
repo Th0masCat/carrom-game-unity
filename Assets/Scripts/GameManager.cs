@@ -74,7 +74,6 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(1);
-        Time.timeScale = 1;
     }
 
     void Update()
@@ -148,6 +147,5 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(playAnimation());
         SceneManager.LoadScene(0);
-        Time.timeScale = 1;
     }
 }
