@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BoardScript : MonoBehaviour
 {
-    public static int scorePlayer1 = 0;
-    public static int scorePlayer2 = 0;
+    public static int scoreEnemy = 0;
+    public static int scorePlayer = 0;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -14,24 +14,24 @@ public class BoardScript : MonoBehaviour
             case "Striker":
                 if (StrikerController.playerTurn == true)
                 {
-                    scorePlayer2--;
+                    scorePlayer--;
                 }
                 else
                 {
-                    scorePlayer1--;
+                    scoreEnemy--;
                 }
 
                 Debug.Log("Striker Entered");
                 other.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 break;
             case "Black":
-                scorePlayer1++;
+                scoreEnemy++;
 
                 Debug.Log("Black Entered");
                 Destroy(other.gameObject);
                 break;
             case "White":
-                scorePlayer2++;
+                scorePlayer++;
                 Debug.Log("White Entered");
                 Destroy(other.gameObject);
                 break;
@@ -39,11 +39,11 @@ public class BoardScript : MonoBehaviour
 
                 if (StrikerController.playerTurn == true)
                 {
-                    scorePlayer2 += 2;
+                    scorePlayer += 2;
                 }
                 else
                 {
-                    scorePlayer1 += 2;
+                    scoreEnemy += 2;
                 }
                 Debug.Log("Queen Entered");
                 Destroy(other.gameObject);

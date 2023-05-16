@@ -7,10 +7,10 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    TextMeshProUGUI scoreTextPlayer1;
+    TextMeshProUGUI scoreTextEnemy;
 
     [SerializeField]
-    TextMeshProUGUI scoreTextPlayer2;
+    TextMeshProUGUI scoreTextPlayer;
 
     public bool gameOver = false;
     bool isPaused = false;
@@ -32,9 +32,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        Time.timeScale  = 1;
-        BoardScript.scorePlayer1 = 0;
-        BoardScript.scorePlayer2 = 0;
+        Time.timeScale = 1;
+        BoardScript.scoreEnemy = 0;
+        BoardScript.scorePlayer = 0;
         timerScript = GetComponent<TimerScript>();
     }
 
@@ -74,9 +74,7 @@ public class GameManager : MonoBehaviour
             enemyStriker.SetActive(true);
         }
 
-
-
-        if (BoardScript.scorePlayer1 >= 8 || BoardScript.scorePlayer2 >= 8 || timerScript.timeLeft <= 0)
+        if (BoardScript.scoreEnemy >= 8 || BoardScript.scorePlayer >= 8 || timerScript.timeLeft <= 0)
         {
             Debug.Log(timerScript.timeLeft);
             onGameOver();
@@ -99,33 +97,32 @@ public class GameManager : MonoBehaviour
     void onGameOver()
     {
         gameOver = true;
-        Time.timeScale = 0;
-        BoardScript.scorePlayer1 = 0;
-        BoardScript.scorePlayer2 = 0;
         gameOverMenu.SetActive(true);
-        if (BoardScript.scorePlayer1 > BoardScript.scorePlayer2)
+        Time.timeScale = 0;
+        if (BoardScript.scoreEnemy > BoardScript.scorePlayer)
         {
-            scoreTextPlayer1.text = "You Win!";
-            scoreTextPlayer2.text = "You Lose!";
+            scoreTextEnemy.text = "You Win!";
+            scoreTextPlayer.text = "You Lose!";
         }
-        else if (BoardScript.scorePlayer1 < BoardScript.scorePlayer2)
+        else if (BoardScript.scoreEnemy < BoardScript.scorePlayer)
         {
-            scoreTextPlayer1.text = "You Lose!";
-            scoreTextPlayer2.text = "You Win!";
+            scoreTextEnemy.text = "You Lose!";
+            scoreTextPlayer.text = "You Win!";
         }
         else
         {
-            scoreTextPlayer1.text = "Draw!";
-            scoreTextPlayer2.text = "Draw!";
+            scoreTextEnemy.text = "Draw!";
+            scoreTextPlayer.text = "Draw!";
         }
     }
+
 
     private void LateUpdate()
     {
         if (!gameOver)
         {
-            scoreTextPlayer1.text = BoardScript.scorePlayer1.ToString();
-            scoreTextPlayer2.text = BoardScript.scorePlayer2.ToString();
+            scoreTextEnemy.text = BoardScript.scoreEnemy.ToString();
+            scoreTextPlayer.text = BoardScript.scorePlayer.ToString();
         }
     }
 

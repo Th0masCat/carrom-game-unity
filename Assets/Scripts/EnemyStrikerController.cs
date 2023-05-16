@@ -52,13 +52,15 @@ public class EnemyStrikerController : MonoBehaviour
 
         foreach (GameObject coin in coins)
         {
-            float distance = Vector3.Distance(coin.transform.position, GetClosestPocket(transform.position));
+            float distance = Vector3.Distance(coin.transform.position, GetClosestPocket(coin.transform.position));
             if (distance < closestDistance)
             {
                 closestCoin = coin;
                 closestDistance = distance;
             }
         }
+
+        Debug.Log("Closest coin is " + closestCoin.name);
 
         // Calculate the direction and speed of the striker based on the position of the target coin and the enemy's striker.
 

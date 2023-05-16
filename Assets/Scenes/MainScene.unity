@@ -531,7 +531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StrikerSlider: {fileID: 676600230}
-  strikerSpeed: 100
+  strikerSpeed: 90
   strikerForceField: {fileID: 8536452892812301654}
 --- !u!50 &82672649
 Rigidbody2D:
