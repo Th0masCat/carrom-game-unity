@@ -100,4 +100,11 @@ public class EnemyStrikerController : MonoBehaviour
         return speed;
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.relativeVelocity.magnitude > 0.1f)
+        {
+            GetComponent<AudioSource>().Play();
+        }
+    }
 }

@@ -450,6 +450,7 @@ GameObject:
   - component: {fileID: 82672648}
   - component: {fileID: 82672650}
   - component: {fileID: 82672649}
+  - component: {fileID: 82672651}
   m_Layer: 0
   m_Name: Striker
   m_TagString: Striker
@@ -603,6 +604,102 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0.011952986, y: 0}
   m_Radius: 2.3111782
+--- !u!82 &82672651
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82672645}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e0c692d54f161de448c1f6972b5ecc40, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.588
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &82705934 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6988323450565643778, guid: f6a6fede6b139924898841b4c027d24c, type: 3}
@@ -1888,6 +1985,7 @@ GameObject:
   - component: {fileID: 585606174}
   - component: {fileID: 585606173}
   - component: {fileID: 585606172}
+  - component: {fileID: 585606177}
   m_Layer: 0
   m_Name: Enemy Striker
   m_TagString: Striker
@@ -2037,6 +2135,102 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &585606177
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 585606171}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e0c692d54f161de448c1f6972b5ecc40, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.588
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &622353537
 GameObject:
   m_ObjectHideFlags: 0
@@ -2701,10 +2895,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: White (4)
       objectReference: {fileID: 0}
-    - target: {fileID: 3606896312359668989, guid: 962f56ea18c3bec49929bf8dad71848c, type: 3}
-      propertyPath: m_AngularDrag
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 8566353207797180199, guid: 962f56ea18c3bec49929bf8dad71848c, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -3003,10 +3193,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1404080529}
     m_Modifications:
-    - target: {fileID: 699155292279643062, guid: f6a6fede6b139924898841b4c027d24c, type: 3}
-      propertyPath: m_AngularDrag
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 6988323450565643776, guid: f6a6fede6b139924898841b4c027d24c, type: 3}
       propertyPath: m_Name
       value: Black (7)
@@ -3071,10 +3257,6 @@ PrefabInstance:
     - target: {fileID: 44670815661185188, guid: 962f56ea18c3bec49929bf8dad71848c, type: 3}
       propertyPath: m_Name
       value: White (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3606896312359668989, guid: 962f56ea18c3bec49929bf8dad71848c, type: 3}
-      propertyPath: m_AngularDrag
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8566353207797180199, guid: 962f56ea18c3bec49929bf8dad71848c, type: 3}
       propertyPath: m_RootOrder
@@ -4096,10 +4278,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: White (7)
       objectReference: {fileID: 0}
-    - target: {fileID: 3606896312359668989, guid: 962f56ea18c3bec49929bf8dad71848c, type: 3}
-      propertyPath: m_AngularDrag
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 8566353207797180199, guid: 962f56ea18c3bec49929bf8dad71848c, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -4231,10 +4409,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: White (6)
       objectReference: {fileID: 0}
-    - target: {fileID: 3606896312359668989, guid: 962f56ea18c3bec49929bf8dad71848c, type: 3}
-      propertyPath: m_AngularDrag
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 8566353207797180199, guid: 962f56ea18c3bec49929bf8dad71848c, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -4292,10 +4466,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1404080529}
     m_Modifications:
-    - target: {fileID: 699155292279643062, guid: f6a6fede6b139924898841b4c027d24c, type: 3}
-      propertyPath: m_AngularDrag
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 6988323450565643776, guid: f6a6fede6b139924898841b4c027d24c, type: 3}
       propertyPath: m_Name
       value: Black (6)
@@ -4468,10 +4638,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1404080529}
     m_Modifications:
-    - target: {fileID: 699155292279643062, guid: f6a6fede6b139924898841b4c027d24c, type: 3}
-      propertyPath: m_AngularDrag
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 6988323450565643776, guid: f6a6fede6b139924898841b4c027d24c, type: 3}
       propertyPath: m_Name
       value: Black (3)
@@ -4683,10 +4849,6 @@ PrefabInstance:
     - target: {fileID: 44670815661185188, guid: 962f56ea18c3bec49929bf8dad71848c, type: 3}
       propertyPath: m_Name
       value: White (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3606896312359668989, guid: 962f56ea18c3bec49929bf8dad71848c, type: 3}
-      propertyPath: m_AngularDrag
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8566353207797180199, guid: 962f56ea18c3bec49929bf8dad71848c, type: 3}
       propertyPath: m_RootOrder
@@ -5466,10 +5628,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: White (5)
       objectReference: {fileID: 0}
-    - target: {fileID: 3606896312359668989, guid: 962f56ea18c3bec49929bf8dad71848c, type: 3}
-      propertyPath: m_AngularDrag
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 8566353207797180199, guid: 962f56ea18c3bec49929bf8dad71848c, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -5664,10 +5822,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1404080529}
     m_Modifications:
-    - target: {fileID: 699155292279643062, guid: f6a6fede6b139924898841b4c027d24c, type: 3}
-      propertyPath: m_AngularDrag
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 6988323450565643776, guid: f6a6fede6b139924898841b4c027d24c, type: 3}
       propertyPath: m_Name
       value: Black (5)
@@ -5729,10 +5883,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1404080529}
     m_Modifications:
-    - target: {fileID: 699155292279643062, guid: f6a6fede6b139924898841b4c027d24c, type: 3}
-      propertyPath: m_AngularDrag
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 6988323450565643776, guid: f6a6fede6b139924898841b4c027d24c, type: 3}
       propertyPath: m_Name
       value: Black (4)
