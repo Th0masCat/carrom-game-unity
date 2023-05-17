@@ -7,10 +7,12 @@ using UnityEngine.UI;
 public class StrikerController : MonoBehaviour
 {
     [SerializeField]
-    Slider StrikerSlider;
+    Slider strikerSlider;
 
     [SerializeField]
     float strikerSpeed = 100f;
+
+    [SerializeField]
     float maxScale = 1f;
 
     [SerializeField]
@@ -20,7 +22,7 @@ public class StrikerController : MonoBehaviour
     bool isCharging;
     float maxForceMagnitude = 30f;
     Rigidbody2D rb;
-    
+
     public static bool playerTurn;
 
     private void Start()
@@ -32,8 +34,9 @@ public class StrikerController : MonoBehaviour
 
     private void OnEnable()
     {
-        transform.position = new Vector3(StrikerSlider.value, -4.57f, 0);
-    } 
+        transform.position = new Vector3(strikerSlider.value, -4.57f, 0);
+        CollisionSoundManager.shouldBeStatic = true;
+    }
 
     private void Update()
     {
@@ -70,12 +73,13 @@ public class StrikerController : MonoBehaviour
         Vector3 direction = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction.z = 0f;
 
-        
+
         float forceMagnitude = direction.magnitude * strikerSpeed;
         forceMagnitude = Mathf.Clamp(forceMagnitude, 0f, maxForceMagnitude);
 
         rb.AddForce(direction.normalized * forceMagnitude, ForceMode2D.Impulse);
-
+        
+        CollisionSoundManager.shouldBeStatic = false;
         yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => rb.velocity.magnitude < 0.1f);
         isMoving = false;
@@ -95,7 +99,7 @@ public class StrikerController : MonoBehaviour
 
         strikerForceField.LookAt(transform.position + direction);
 
-        float scaleValue = Vector3.Distance(transform.position, transform.position + direction);
+        float scaleValue = Vector3.Distance(transform.position, transform.position + direction / 4f);
 
         if (scaleValue > maxScale)
         {
@@ -104,12 +108,13 @@ public class StrikerController : MonoBehaviour
 
         strikerForceField.localScale = new Vector3(scaleValue, scaleValue, scaleValue);
     }
-    
+
+    float radius = 0.5f;
     public void SetSliderX()
     {
         if (rb.velocity.magnitude < 0.1f)
         {
-            transform.position = new Vector3(StrikerSlider.value, -4.57f, 0);
+            transform.position = new Vector3(strikerSlider.value, -4.57f, 0);
         }
     }
 
