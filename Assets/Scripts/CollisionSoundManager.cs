@@ -14,10 +14,9 @@ public class CollisionSoundManager : MonoBehaviour
         }
     }
 
-
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.relativeVelocity.magnitude > 0.1f)
+        if (!other.gameObject.CompareTag("Pocket") && other.relativeVelocity.magnitude > 0.1f)
         {
             GetComponent<AudioSource>().Play();
             GetComponent<AudioSource>().volume = other.relativeVelocity.magnitude / 10;

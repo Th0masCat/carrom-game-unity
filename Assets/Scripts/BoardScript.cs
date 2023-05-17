@@ -25,6 +25,7 @@ public class BoardScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        GetComponent<AudioSource>().Play();
         switch (other.gameObject.tag)
         {
             case "Striker":
