@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     bool gameOver = false;
     bool isPaused = false;
 
-    
+
     [SerializeField]
     TextMeshProUGUI scoreTextEnemy;
 
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI instructionsText;
 
-    
+
     [SerializeField]
     GameObject instructionsMenu;
 
@@ -52,15 +52,21 @@ public class GameManager : MonoBehaviour
 
 
     private const string FirstTimeLaunchKey = "FirstTimeLaunch";
-    
-    void Awake() {
+
+    void Awake()
+    {
+        timerScript = GetComponent<TimerScript>();
+
         if (PlayerPrefs.GetInt(FirstTimeLaunchKey, 0) == 0)
         {
+            timerScript.isTimerRunning = false;
+            Time.timeScale = 0;
             instructionsMenu.SetActive(true);
             PlayerPrefs.SetInt(FirstTimeLaunchKey, 1);
         }
         else
         {
+            timerScript.isTimerRunning = true;
             instructionsMenu.SetActive(false);
         }
     }
@@ -70,7 +76,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         BoardScript.scoreEnemy = 0;
         BoardScript.scorePlayer = 0;
-        timerScript = GetComponent<TimerScript>();
     }
 
     void Update()
@@ -174,6 +179,8 @@ public class GameManager : MonoBehaviour
         instructionsText.pageToDisplay++;
         if (instructionsText.pageToDisplay == 3)
         {
+            Time.timeScale = 1;
+            timerScript.isTimerRunning = true;
             instructionsMenu.SetActive(false);
         }
     }

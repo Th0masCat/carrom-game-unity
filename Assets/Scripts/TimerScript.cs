@@ -9,7 +9,7 @@ public class TimerScript : MonoBehaviour
     TextMeshProUGUI timerText;
 
     public float timeLeft = 120.0f;  // The time in seconds that the timer will run for
-    public bool isTimerRunning = true;  // Indicates whether the timer is currently running
+    public bool isTimerRunning; // Indicates whether the timer is currently running
     private bool isTimerSoundPlaying = false;
 
     void Update()
