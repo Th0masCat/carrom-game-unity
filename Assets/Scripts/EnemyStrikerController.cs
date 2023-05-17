@@ -25,6 +25,13 @@ public class EnemyStrikerController : MonoBehaviour
     private void OnEnable()
     {
         CollisionSoundManager.shouldBeStatic = true;
+        GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    IEnumerator EnemyTurn()
+    {
+        // Determine which coin to hit based on game logic.
+        // For example, the AI could target the closest coin to the pocket, or a high-value coin.
         
         const int maxAttempts = 10;
         int attempts = 0;
@@ -60,12 +67,10 @@ public class EnemyStrikerController : MonoBehaviour
             transform.position = new Vector3(0f, 3.45f, 0f);
             isObstructed = false;
         }
-    }
 
-    IEnumerator EnemyTurn()
-    {
-        // Determine which coin to hit based on game logic.
-        // For example, the AI could target the closest coin to the pocket, or a high-value coin.
+        yield return new WaitWhile(()=>isObstructed);
+        GetComponent<SpriteRenderer>().enabled = true;
+
         yield return new WaitForSeconds(2f);
         CollisionSoundManager.shouldBeStatic = false;
 
