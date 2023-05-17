@@ -9,11 +9,21 @@ public class GameManager : MonoBehaviour
     bool gameOver = false;
     bool isPaused = false;
 
+    
     [SerializeField]
     TextMeshProUGUI scoreTextEnemy;
 
     [SerializeField]
-    TextMeshProUGUI scoreTextPlayer; 
+    TextMeshProUGUI scoreTextPlayer;
+
+    [SerializeField]
+    TextMeshProUGUI gameOverText;
+    [SerializeField]
+    TextMeshProUGUI instructionsText;
+
+    
+    [SerializeField]
+    GameObject instructionsMenu;
 
     [SerializeField]
     GameObject pauseMenu;
@@ -33,13 +43,27 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject slider;
 
-    [SerializeField]
-    TextMeshProUGUI gameOverText;
+
 
     [SerializeField]
     Animator animator;
 
     TimerScript timerScript;
+
+
+    private const string FirstTimeLaunchKey = "FirstTimeLaunch";
+    
+    void Awake() {
+        if (PlayerPrefs.GetInt(FirstTimeLaunchKey, 0) == 0)
+        {
+            instructionsMenu.SetActive(true);
+            PlayerPrefs.SetInt(FirstTimeLaunchKey, 1);
+        }
+        else
+        {
+            instructionsMenu.SetActive(false);
+        }
+    }
 
     void Start()
     {
@@ -143,5 +167,14 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(playAnimation());
         SceneManager.LoadScene(0);
+    }
+
+    public void NextPage()
+    {
+        instructionsText.pageToDisplay++;
+        if (instructionsText.pageToDisplay == 3)
+        {
+            instructionsMenu.SetActive(false);
+        }
     }
 }
