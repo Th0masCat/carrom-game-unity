@@ -48,14 +48,12 @@ public class EnemyStrikerController : MonoBehaviour
 
             foreach (Collider2D collider in colliders)
             {
-                Debug.Log(collider.tag);
                 if (collider.CompareTag("Black") || collider.CompareTag("White") || collider.CompareTag("Striker"))
                 {
                     isObstructed = true;
                     break;
                 }
             }
-            Debug.Log("Attempt " + attempts);
 
             attempts++;
         }

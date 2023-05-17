@@ -97,7 +97,6 @@ public class GameManager : MonoBehaviour
 
         if (BoardScript.scoreEnemy >= 8 || BoardScript.scorePlayer >= 8 || timerScript.timeLeft <= 0)
         {
-            Debug.Log(timerScript.timeLeft);
             onGameOver();
         }
 
