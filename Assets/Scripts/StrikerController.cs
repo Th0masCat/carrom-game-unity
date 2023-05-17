@@ -108,8 +108,6 @@ public class StrikerController : MonoBehaviour
 
         strikerForceField.localScale = new Vector3(scaleValue, scaleValue, scaleValue);
     }
-
-    float radius = 0.5f;
     public void SetSliderX()
     {
         if (rb.velocity.magnitude < 0.1f)
@@ -117,7 +115,6 @@ public class StrikerController : MonoBehaviour
             transform.position = new Vector3(strikerSlider.value, -4.57f, 0);
         }
     }
-
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Board"))

@@ -24,27 +24,48 @@ public class EnemyStrikerController : MonoBehaviour
 
     private void OnEnable()
     {
-        transform.position = new Vector3(0, 3.45f, 0f);
         CollisionSoundManager.shouldBeStatic = true;
+        
+        const int maxAttempts = 10;
+        int attempts = 0;
+        bool isObstructed;
+
+        do
+        {
+            isObstructed = false;
+
+            float x = Random.Range(-3.24f, 3.24f);
+            transform.position = new Vector3(x, 3.45f, 0f);
+
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.1f);
+
+            foreach (Collider2D collider in colliders)
+            {
+                Debug.Log(collider.tag);
+                if (collider.CompareTag("Black") || collider.CompareTag("White") || collider.CompareTag("Striker"))
+                {
+                    isObstructed = true;
+                    break;
+                }
+            }
+            Debug.Log("Attempt " + attempts);
+
+            attempts++;
+        }
+        while (isObstructed && attempts < maxAttempts);
+
+        if (isObstructed)
+        {
+            Debug.Log("Failed to find a valid position for the enemy striker.");
+            transform.position = new Vector3(0f, 3.45f, 0f);
+            isObstructed = false;
+        }
     }
 
     IEnumerator EnemyTurn()
     {
         // Determine which coin to hit based on game logic.
         // For example, the AI could target the closest coin to the pocket, or a high-value coin.
-        yield return new WaitForSeconds(1.5f);
-
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 5f);
-        foreach (Collider2D collider in colliders)
-        {
-            Debug.Log(collider.gameObject.name);
-            if (collider.gameObject.CompareTag("Black") || collider.gameObject.CompareTag("White") || collider.gameObject.CompareTag("Queen"))
-            {
-                float x = Random.Range(-3.24f, 3.24f);
-                transform.position = new Vector3(x, 3.45f, 0f);
-                break;
-            }
-        }
         yield return new WaitForSeconds(2f);
         CollisionSoundManager.shouldBeStatic = false;
 
