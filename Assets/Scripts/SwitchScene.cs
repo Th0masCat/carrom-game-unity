@@ -8,7 +8,8 @@ public class SwitchScene : MonoBehaviour
     [SerializeField]
     Animator animator;
 
-    private void Start() {
+    private void Start()
+    {
         Time.timeScale = 1;
     }
 
@@ -24,8 +25,13 @@ public class SwitchScene : MonoBehaviour
 
     public IEnumerator LoadScene(int index)
     {
+        // Trigger the "fade" animation.
         animator.SetTrigger("fade");
+
+        // Wait for 1 second to allow the animation to play.
         yield return new WaitForSeconds(1f);
+
+        // Load the specified scene by index.
         SceneManager.LoadScene(index);
     }
 }

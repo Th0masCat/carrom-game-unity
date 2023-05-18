@@ -15,6 +15,7 @@ public class EnemyStrikerController : MonoBehaviour
 
     private void Update()
     {
+        // Check if the enemy striker has come to a near stop and is not moving
         if (rb.velocity.magnitude < 0.1f && !isMoving)
         {
             isMoving = true;
@@ -24,15 +25,16 @@ public class EnemyStrikerController : MonoBehaviour
 
     private void OnEnable()
     {
+        // Reset the initial state of the enemy striker
         CollisionSoundManager.shouldBeStatic = true;
         GetComponent<SpriteRenderer>().enabled = false;
+        transform.position = new Vector3(0, 3.45f, 0f);
     }
 
     IEnumerator EnemyTurn()
     {
-        // Determine which coin to hit based on game logic.
-        // For example, the AI could target the closest coin to the pocket, or a high-value coin.
-        
+        // Determine the target coin based on game logic
+        // Find the closest coin to a pocket
         const int maxAttempts = 10;
         int attempts = 0;
         bool isObstructed;
@@ -41,9 +43,11 @@ public class EnemyStrikerController : MonoBehaviour
         {
             isObstructed = false;
 
+            // Generate a random position within the board bounds
             float x = Random.Range(-3.24f, 3.24f);
             transform.position = new Vector3(x, 3.45f, 0f);
 
+            // Check if the generated position is obstructed by other coins or the striker
             Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.1f);
 
             foreach (Collider2D collider in colliders)
@@ -66,21 +70,24 @@ public class EnemyStrikerController : MonoBehaviour
             isObstructed = false;
         }
 
-        yield return new WaitWhile(()=>isObstructed);
+        yield return new WaitWhile(() => isObstructed);
         GetComponent<SpriteRenderer>().enabled = true;
 
         yield return new WaitForSeconds(2f);
         CollisionSoundManager.shouldBeStatic = false;
 
+        // Find all the available black coins
         GameObject[] coins = GameObject.FindGameObjectsWithTag("Black");
         GameObject closestCoin = null;
         float closestDistance = Mathf.Infinity;
+
         if (coins.Length == 0)
         {
             Debug.Log("No coins left");
             yield break;
         }
 
+        // Find the closest coin to a pocket
         foreach (GameObject coin in coins)
         {
             float distance = Vector3.Distance(coin.transform.position, GetClosestPocket(coin.transform.position));
@@ -108,6 +115,7 @@ public class EnemyStrikerController : MonoBehaviour
 
     Vector3 GetClosestPocket(Vector3 position)
     {
+        // Find the closest pocket to a given position
         Vector3 closestPocket = Vector3.zero;
         float closestDistance = Mathf.Infinity;
         GameObject[] pockets = GameObject.FindGameObjectsWithTag("Pocket");
@@ -127,6 +135,7 @@ public class EnemyStrikerController : MonoBehaviour
 
     float CalculateStrikerSpeed(float distance)
     {
+        // Calculate the speed of the striker based on the distance to the target coin
         float maxDistance = 4.0f; // Maximum distance the striker can travel
         float minSpeed = 10f; // Minimum striker speed
         float maxSpeed = 30f; // Maximum striker speed
@@ -137,6 +146,7 @@ public class EnemyStrikerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        // Play the collision sound if the enemy striker collides with the board
         if (other.gameObject.CompareTag("Board"))
         {
             GetComponent<AudioSource>().Play();

@@ -23,9 +23,9 @@ public class TimerScript : MonoBehaviour
             {
                 timerText.color = Color.red;
                 
-            if (!isTimerSoundPlaying)
+                if (!isTimerSoundPlaying)
                 {
-                    
+                    // Play the AudioSource to indicate that time is running out
                     GetComponent<AudioSource>().Play();
                     isTimerSoundPlaying = true;
                 }
@@ -33,6 +33,7 @@ public class TimerScript : MonoBehaviour
 
             if (timeLeft <= 0)
             {
+                // Stop the AudioSource and set the timer to not running
                 GetComponent<AudioSource>().Stop();
                 isTimerRunning = false;
                 timerText.text = "Time's Up!";

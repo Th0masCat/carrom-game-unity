@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     bool gameOver = false;
     bool isPaused = false;
 
-
+    // TextMeshProUGUI variables for displaying scores, game over text, and instructions.
     [SerializeField]
     TextMeshProUGUI scoreTextEnemy;
 
@@ -18,10 +18,11 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     TextMeshProUGUI gameOverText;
+
     [SerializeField]
     TextMeshProUGUI instructionsText;
 
-
+    // Game object variables for menus, strikers, turn text, and a slider.
     [SerializeField]
     GameObject instructionsMenu;
 
@@ -43,13 +44,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject slider;
 
-
-
     [SerializeField]
     Animator animator;
 
     TimerScript timerScript;
-
 
     private const string FirstTimeLaunchKey = "FirstTimeLaunch";
 
@@ -57,6 +55,7 @@ public class GameManager : MonoBehaviour
     {
         timerScript = GetComponent<TimerScript>();
 
+        // Check if it's the first time launching the game.
         if (PlayerPrefs.GetInt(FirstTimeLaunchKey, 0) == 0)
         {
             timerScript.isTimerRunning = false;
@@ -126,7 +125,6 @@ public class GameManager : MonoBehaviour
     {
         animator.SetTrigger("fade");
         yield return new WaitForSeconds(1f);
-
     }
 
     void onGameOver()
