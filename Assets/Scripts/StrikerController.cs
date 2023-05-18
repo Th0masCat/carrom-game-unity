@@ -50,17 +50,17 @@ public class StrikerController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        // Reset the position of the striker if it is not at the correct y-axis position
-        if (transform.position.y != -4.57f)
-        {
-            transform.position = new Vector3(0, -4.57f, 0);
-        }
-
         // If the striker is moving, disable charging and return
         if (rb.velocity.magnitude > 0.1f)
         {
             isCharging = false;
             return;
+        }
+
+        // Reset the position of the striker if it is not at the correct y-axis position
+        if (transform.position.y != -4.57f)
+        {
+            transform.position = new Vector3(0, -4.57f, 0);
         }
 
         // Enable charging and show the striker force field
@@ -81,6 +81,7 @@ public class StrikerController : MonoBehaviour
 
         strikerForceField.gameObject.SetActive(false);
         isCharging = false;
+        yield return new WaitForSeconds(0.1f);
 
         // Calculate the direction and magnitude of the force based on the mouse position
         Vector3 direction = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);

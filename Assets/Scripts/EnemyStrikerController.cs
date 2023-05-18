@@ -75,6 +75,7 @@ public class EnemyStrikerController : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
         CollisionSoundManager.shouldBeStatic = false;
+        yield return new WaitForSeconds(0.1f);
 
         // Find all the available black coins
         GameObject[] coins = GameObject.FindGameObjectsWithTag("Black");
