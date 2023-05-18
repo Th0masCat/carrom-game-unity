@@ -37,15 +37,12 @@ The player controls are handled by three methods OnMouseDown(), OnMouseDrag() an
 - OnMouseUp() controls the force amount by which the striker should shoot. The force is clamped to make sure the player isn't able to exceed a certain threshold.
 Since this is a coroutine it waits till the striker comes to a stop and then switches the turn to the enemy(AI).
 
-<!--
-## Game Manager
-
-## Board Sprite Resize according to screen size
-
-## Sound System
-
-## Scene Switch Animation
---> 
+## Additional Features
+- A functioning pause menu, has the option to restart/exit the game. 
+- Sound system for collisions/scoring. Timer sound when the time is less than 10 seconds to make the player aware. 
+- Board sprite always renders at max width accoring to device width.
+- Fade-in/Fade-out animation on scene change.
+- Instructions pop-up only on first time load.(Uses PlayerPrefs to implement the same)
 
 ## Setup
 1. Clone the repository or download the project files.
