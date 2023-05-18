@@ -35,6 +35,8 @@ public class StrikerController : MonoBehaviour
     {
         // Reset the position of the striker when it is enabled
         transform.position = new Vector3(strikerSlider.value, -4.57f, 0);
+        strikerForceField.LookAt(transform.position);
+        strikerForceField.localScale = new Vector3(0, 0, 0);
         CollisionSoundManager.shouldBeStatic = true;
     }
 
